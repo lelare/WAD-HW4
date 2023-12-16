@@ -1,8 +1,9 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import SignUp from "../views/SignUp.vue";
 import Login from "../views/Login.vue";
 import AddPost from "../views/AddPost.vue";
+import Post from "../views/Post.vue";
 import Contact from "../views/Contact.vue";
 import Terms from "../views/Terms.vue";
 import Privacy from "../views/Privacy.vue";
@@ -44,6 +45,11 @@ const routes = [
         component: AddPost,
     },
     {
+        path: "/post/:id",
+        name: "post",
+        component: Post,
+    },
+    {
         path: "/contact",
         name: "contact",
         component: Contact,
@@ -61,7 +67,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(process.env.BASE_URL),
     routes,
 });
 

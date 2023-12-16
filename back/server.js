@@ -123,3 +123,42 @@ app.post("/posts", async (req, res) => {
         console.error(err.message);
     }
 });
+
+// get posts
+app.get("/posts", async (req, res) => {
+    try {
+        console.log("get posts request has arrived");
+        const posts = await pool.query("SELECT * FROM posts");
+        res.json(posts.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+// get post
+app.get("/posts/:id", async (req, res) => {
+    try {
+        console.log("get a post with route parameter  request has arrived");
+        const { id } = req.params; // assigning all route "parameters" to the id "object"
+        const posts = await pool.query("SELECT * FROM posts WHERE id = $1", [id]);
+        res.json(posts.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+// update post
+app.put("/posts/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const post = req.body;
+        console.log("update request has arrived");
+        const updatepost = await pool.query("UPDATE posts SET (title, body, urllink) = ($2) WHERE id = $1", [
+            id,
+            post.body,
+        ]);
+        res.json(updatepost);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
