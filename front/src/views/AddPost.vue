@@ -55,29 +55,3 @@ export default {
     },
 };
 </script>
-
-<style lang="scss" scoped>
-@media (min-width: 481px) {
-    section.section-small {
-        flex: 0 0 300px;
-    }
-}
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-
-    & > textarea {
-        // height: 36px;
-        padding: 12px;
-        border: 0;
-        border-radius: 15px;
-    }
-
-    & > label {
-        width: 30%;
-        text-align: right;
-        margin-right: 10px;
-    }
-}
-</style>

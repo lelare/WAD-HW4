@@ -90,29 +90,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media (min-width: 481px) {
-    section.section-small {
-        flex: 0 0 300px;
-    }
-}
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-
-    & > input {
-        height: 36px;
-        padding: 0 12px;
-        border: 0;
-        border-radius: 15px;
-    }
-
-    & > label {
-        width: 30%;
-        text-align: right;
-        margin-right: 10px;
-    }
-}
 .error {
     color: red;
     font-size: 0.8em;

@@ -3,9 +3,10 @@
         <aside></aside>
         <section>
             <PostsList />
-            <router-link to="/addPost"><button class="btn">Add Post</button></router-link>
-            <div class="text-center">
-                <button class="btn" v-on:click="ResetLikes">Reset Likes</button>
+            <div class="row-between">
+                <router-link to="/addPost"><button class="btn">Add Post</button></router-link>
+                <button class="btn mx-0">Delete all</button>
+                <button class="btn mx-0" v-on:click="ResetLikes">Reset Likes</button>
             </div>
         </section>
         <aside></aside>
@@ -21,9 +22,9 @@ export default {
         PostsList,
     },
     methods: {
-        ResetLikes: function () {
-            this.$store.dispatch("ResetLikesAct");
-        },
+        // ResetLikes: function () {
+        //     this.$store.dispatch("ResetLikesAct");
+        // },
     },
 };
 </script>
