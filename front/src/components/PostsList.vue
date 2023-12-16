@@ -6,7 +6,7 @@
                     <img src="@/assets/user.png" alt="profile-img" />
                     <!-- <span>{{ post.author_name }}</span> -->
                 </div>
-                <!-- <span>{{ formatDate(post.created_time) }}</span> -->
+                <span>{{ formatDate(post.created_time) }}</span>
             </div>
             <a class="post_body" :href="'/post/' + post.id">
                 <!-- <img v-if="post.img" :src="post.img.url" :alt="post.img.alt" /> -->
@@ -14,9 +14,10 @@
             </a>
             <div class="post_footer">
                 <!-- <button v-on:click="IncreaseLike(post.id)"><img src="@/assets/like.png" alt="like-icon" /></button> -->
-                <!-- <span>{{ post.like_count }} likes</span> -->
-                <!-- <img src="@/assets/comment.png" alt="comment-icon" /> -->
-                <!-- <span>{{ post.comment_count }}</span> -->
+                <img src="@/assets/like.png" alt="comment-icon" />
+                <span>{{ post.like_count }} likes</span>
+                <img src="@/assets/comment.png" alt="comment-icon" />
+                <span>{{ post.comment_count }}</span>
             </div>
         </article>
     </div>
@@ -41,22 +42,12 @@ export default {
                 .then((data) => (this.postsList = data))
                 .catch((err) => console.log(err.message));
         },
-        // formatDate: function (str) {
-        //     let date = new Date(str);
+        formatDate: function (str) {
+            let date = new Date(str);
 
-        //     // let dateFormatter = new Intl.DateTimeFormat("en-US", {
-        //     //     year: "numeric",
-        //     //     month: "short",
-        //     //     day: "numeric",
-        //     // });
-
-        //     // let formattedDateString = dateFormatter.format(date);
-        //     // return formattedDateString;
-
-        //     // or
-        //     const options = { year: "numeric", month: "short", day: "numeric" };
-        //     return date.toLocaleDateString("en-US", options);
-        // },
+            const options = { year: "numeric", month: "short", day: "numeric" };
+            return date.toLocaleDateString("en-US", options);
+        },
         // IncreaseLike: function (postId) {
         //     this.$store.dispatch("IncreaseLikeAct", postId);
         // },
@@ -101,6 +92,7 @@ article {
     }
 
     &_body {
+        display: block;
         padding-top: 16px;
         padding-bottom: 16px;
 

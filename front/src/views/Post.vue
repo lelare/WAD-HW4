@@ -13,8 +13,10 @@
                         v-model="post.body"
                     ></textarea>
                 </div>
-                <button class="btn" type="submit">Update</button>
-                <button class="btn" type="button" @click="deletePost">Delete</button>
+                <div class="row-between">
+                    <button class="btn" type="submit">Update</button>
+                    <button class="btn" type="button" @click="deletePost">Delete</button>
+                </div>
             </form>
         </section>
     </main>
@@ -30,7 +32,7 @@ export default {
         };
     },
     methods: {
-        fetchAPost(id) {
+        fetchPost(id) {
             fetch(`http://localhost:3000/posts/${id}`)
                 .then((response) => response.json())
                 .then((data) => (this.post = data))
@@ -52,35 +54,22 @@ export default {
                     console.log(e);
                 });
         },
+        deletePost() {
+            fetch(`http://localhost:3000/posts/${this.post.id}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+            })
+                .then((response) => {
+                    console.log(response.data);
+                    this.$router.push("/");
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        },
     },
     mounted() {
-        this.fetchAPost(this.$route.params.id);
+        this.fetchPost(this.$route.params.id);
     },
 };
 </script>
-
-<style lang="scss" scoped>
-@media (min-width: 481px) {
-    section.section-small {
-        flex: 0 0 300px;
-    }
-}
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-
-    & > textarea {
-        // height: 36px;
-        padding: 12px;
-        border: 0;
-        border-radius: 15px;
-    }
-
-    & > label {
-        width: 30%;
-        text-align: right;
-        margin-right: 10px;
-    }
-}
-</style>

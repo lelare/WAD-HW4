@@ -71,4 +71,15 @@ a {
         background: #3a5088;
     }
 }
+
+.row-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mx-0 {
+    margin-left: 0;
+    margin-right: 0;
+}
 </style>

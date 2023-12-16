@@ -3,6 +3,10 @@
         <section class="box text-center section-small">
             <form @submit.prevent="signUpHandler">
                 <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="Username" required v-model="username" />
+                </div>
+                <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" placeholder="Email" required v-model="email" />
                 </div>
@@ -34,6 +38,7 @@ export default {
 
     data: function () {
         return {
+            username: "",
             email: "",
             password: "",
             // validatePassword: "",
@@ -56,6 +61,7 @@ export default {
         // },
         signUpHandler() {
             var data = {
+                username: this.username,
                 email: this.email,
                 password: this.password,
             };
@@ -84,29 +90,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media (min-width: 481px) {
-    section.section-small {
-        flex: 0 0 300px;
-    }
-}
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-
-    & > input {
-        height: 36px;
-        padding: 0 12px;
-        border: 0;
-        border-radius: 15px;
-    }
-
-    & > label {
-        width: 30%;
-        text-align: right;
-        margin-right: 10px;
-    }
-}
 .error {
     color: red;
     font-size: 0.8em;

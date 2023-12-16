@@ -55,8 +55,7 @@ export default {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
-                    //this.$router.push("/");
+                    console.log("data", data);
                     location.assign("/");
                 })
                 .catch((e) => {
@@ -68,7 +67,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @media (min-width: 481px) {
     section.section-small {
         flex: 0 0 300px;
@@ -82,6 +81,12 @@ export default {
     & > input {
         height: 36px;
         padding: 0 12px;
+        border: 0;
+        border-radius: 15px;
+    }
+
+    & > textarea {
+        padding: 12px;
         border: 0;
         border-radius: 15px;
     }
