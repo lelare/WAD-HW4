@@ -92,11 +92,4 @@ export default {
         margin-right: 10px;
     }
 }
-
-.error {
-    color: red;
-    font-size: 0.8em;
-    margin-bottom: 10px;
-    text-align: center;
-}
 </style>

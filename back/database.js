@@ -1,21 +1,21 @@
 const Pool = require("pg").Pool;
 const pool = new Pool({
-  user: "postgres",
-  password: "postgres",
-  database: "WAD-HW4",
-  host: "localhost",
-  port: "5432",
+    user: "postgres",
+    password: "test12345",
+    database: "WAD-HW4",
+    host: "localhost",
+    port: "5432",
 });
 
 const execute = async (query) => {
-  try {
-    await pool.connect();
-    await pool.query(query);
-    return true;
-  } catch (error) {
-    console.error(error.stack);
-    return false;
-  }
+    try {
+        await pool.connect();
+        await pool.query(query);
+        return true;
+    } catch (error) {
+        console.error(error.stack);
+        return false;
+    }
 };
 
 const createTblQuery = `
@@ -36,9 +36,9 @@ const createTblQuery = `
     );`;
 
 execute(createTblQuery).then((result) => {
-  if (result) {
-    console.log('Tables "users", "posts" are created');
-  }
+    if (result) {
+        console.log('Tables "users", "posts" are created');
+    }
 });
 
 module.exports = pool;

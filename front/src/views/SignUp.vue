@@ -107,7 +107,6 @@ export default {
         margin-right: 10px;
     }
 }
-
 .error {
     color: red;
     font-size: 0.8em;
