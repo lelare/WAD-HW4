@@ -25,6 +25,7 @@ export default {
         return {
             post: {
                 body: "",
+                user_id: "",
             },
         };
     },
@@ -32,6 +33,7 @@ export default {
         addPost() {
             var data = {
                 body: this.post.body,
+                user_id: "",
             };
             // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
             fetch("http://localhost:3000/posts", {
@@ -43,7 +45,6 @@ export default {
             })
                 .then((response) => {
                     console.log(response.data);
-                    // redirect to /allposts view
                     this.$router.push("/");
                 })
                 .catch((e) => {

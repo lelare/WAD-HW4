@@ -3,6 +3,10 @@
         <section class="box text-center section-small">
             <form @submit.prevent="signUpHandler">
                 <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="Username" required v-model="username" />
+                </div>
+                <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" placeholder="Email" required v-model="email" />
                 </div>
@@ -34,6 +38,7 @@ export default {
 
     data: function () {
         return {
+            username: "",
             email: "",
             password: "",
             // validatePassword: "",
@@ -56,6 +61,7 @@ export default {
         // },
         signUpHandler() {
             var data = {
+                username: this.username,
                 email: this.email,
                 password: this.password,
             };

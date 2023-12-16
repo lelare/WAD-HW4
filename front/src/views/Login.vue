@@ -55,7 +55,7 @@ export default {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    console.log("data", data);
                     //this.$router.push("/");
                     location.assign("/");
                 })

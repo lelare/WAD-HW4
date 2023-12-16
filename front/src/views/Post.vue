@@ -30,7 +30,7 @@ export default {
         };
     },
     methods: {
-        fetchAPost(id) {
+        fetchPost(id) {
             fetch(`http://localhost:3000/posts/${id}`)
                 .then((response) => response.json())
                 .then((data) => (this.post = data))
@@ -52,9 +52,22 @@ export default {
                     console.log(e);
                 });
         },
+        deletePost() {
+            fetch(`http://localhost:3000/posts/${this.post.id}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+            })
+                .then((response) => {
+                    console.log(response.data);
+                    this.$router.push("/");
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        },
     },
     mounted() {
-        this.fetchAPost(this.$route.params.id);
+        this.fetchPost(this.$route.params.id);
     },
 };
 </script>
