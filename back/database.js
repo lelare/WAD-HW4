@@ -24,9 +24,7 @@ const createTblQuery = `
         id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
         email VARCHAR(200) NOT NULL UNIQUE,
         password VARCHAR(200) NOT NULL 
-    );`;
-
-const createTblQuery2 = `
+    );
     CREATE TABLE IF NOT EXISTS "posts" (
 	    "id" SERIAL PRIMARY KEY,         
 	    "body" VARCHAR(200) NOT NULL
@@ -34,13 +32,7 @@ const createTblQuery2 = `
 
 execute(createTblQuery).then((result) => {
     if (result) {
-        console.log('Table "users" is created');
-    }
-});
-
-execute(createTblQuery2).then((result) => {
-    if (result) {
-        console.log('Table "posts" is created');
+        console.log('Tables "users", "posts" are created');
     }
 });
 
