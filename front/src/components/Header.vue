@@ -7,25 +7,8 @@
                 <li><router-link to="/contact">Contact</router-link></li>
             </ul>
         </nav>
-        <ProfileDropdown v-if="authenticated" />
     </header>
 </template>
-
-<script>
-import ProfileDropdown from "./ProfileDropdown.vue";
-import auth from "@/auth";
-
-export default {
-    data: function () {
-        return {
-            authenticated: auth.authenticated(),
-        };
-    },
-    components: {
-        ProfileDropdown,
-    },
-};
-</script>
 
 <style lang="scss" scoped>
 header {

@@ -43,9 +43,6 @@ export default {
             const options = { year: "numeric", month: "short", day: "numeric" };
             return date.toLocaleDateString("en-US", options);
         },
-        // IncreaseLike: function (postId) {
-        //     this.$store.dispatch("IncreaseLikeAct", postId);
-        // },
     },
     mounted() {
         this.fetchPosts();

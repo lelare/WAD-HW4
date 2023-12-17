@@ -94,4 +94,8 @@ h2 {
     margin-left: 0;
     margin-right: 0;
 }
+
+.mb-5 {
+    margin-bottom: 15px;
+}
 </style>

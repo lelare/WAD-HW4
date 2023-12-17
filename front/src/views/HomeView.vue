@@ -2,6 +2,7 @@
     <main>
         <aside></aside>
         <section>
+            <div class="text-center mb-5"><button class="btn" @click="logoutHandler">Logout</button></div>
             <PostsList />
             <div class="row-between">
                 <router-link to="/addPost"><button class="btn">Add Post</button></router-link>
@@ -21,6 +22,20 @@ export default {
         PostsList,
     },
     methods: {
+        logoutHandler() {
+            fetch("http://localhost:3000/auth/logout", {
+                credentials: "include",
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    localStorage.removeItem("authToken");
+                    this.$router.push("/login");
+                })
+                .catch((e) => {
+                    console.log(e);
+                    console.log("error logout");
+                });
+        },
         DeleteAllPosts() {
             var data = {
                 user_id: localStorage.getItem("authToken"),
