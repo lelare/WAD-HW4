@@ -1,25 +1,25 @@
 <template>
     <div>
-        <article class="box" v-for="post in postsList" :key="post.id">
-            <div class="post_heading">
-                <div class="post_author">
-                    <img src="@/assets/user.png" alt="profile-img" />
-                    <span>{{ post.username }}</span>
+        <a :href="'/post/' + post.id" v-for="post in postsList" :key="post.id">
+            <article class="box">
+                <div class="post_heading">
+                    <div class="post_author">
+                        <img src="@/assets/user.png" alt="profile-img" />
+                        <span>{{ post.username }}</span>
+                    </div>
+                    <span>{{ formatDate(post.created_time) }}</span>
                 </div>
-                <span>{{ formatDate(post.created_time) }}</span>
-            </div>
-            <a class="post_body" :href="'/post/' + post.id">
-                <!-- <img v-if="post.img" :src="post.img.url" :alt="post.img.alt" /> -->
-                <p>{{ post.body }}</p>
-            </a>
-            <div class="post_footer">
-                <!-- <button v-on:click="IncreaseLike(post.id)"><img src="@/assets/like.png" alt="like-icon" /></button> -->
-                <img src="@/assets/like.png" alt="comment-icon" />
-                <span>{{ post.like_count }} likes</span>
-                <img src="@/assets/comment.png" alt="comment-icon" />
-                <span>{{ post.comment_count }}</span>
-            </div>
-        </article>
+                <div class="post_body" :href="'/post/' + post.id">
+                    <p>{{ post.body }}</p>
+                </div>
+                <div class="post_footer">
+                    <img src="@/assets/like.png" alt="comment-icon" />
+                    <span>{{ post.like_count }} likes</span>
+                    <img src="@/assets/comment.png" alt="comment-icon" />
+                    <span>{{ post.comment_count }}</span>
+                </div>
+            </article>
+        </a>
     </div>
 </template>
 

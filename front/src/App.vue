@@ -56,6 +56,10 @@ a {
     text-decoration: none;
 }
 
+h2 {
+    margin-top: 0;
+}
+
 .btn {
     margin: 0 auto;
     padding: 0 20px;
@@ -69,6 +73,14 @@ a {
 
     &:hover {
         background: #3a5088;
+    }
+
+    &:disabled {
+        background-color: gray;
+
+        &:hover {
+            background: gray;
+        }
     }
 }
 

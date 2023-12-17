@@ -1,6 +1,7 @@
 <template>
     <main>
         <section class="box text-center section-small">
+            <h2 class="text-center">Add Post</h2>
             <form @submit.prevent="addPost">
                 <div class="form-group">
                     <label for="message" id="msg-label">Post body</label>

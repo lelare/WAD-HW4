@@ -1,6 +1,7 @@
 <template>
     <main>
         <section class="box text-center section-small">
+            <h2 class="text-center">A Post</h2>
             <form @submit.prevent="updatePost">
                 <div class="form-group">
                     <label for="message" id="msg-label">Post body</label>
@@ -11,11 +12,12 @@
                         rows="5"
                         required
                         v-model="post.body"
+                        :readonly="!isUserPost"
                     ></textarea>
                 </div>
                 <div class="row-between">
-                    <button class="btn" type="submit" @click="updatePost">Update</button>
-                    <button class="btn" type="button" @click="deletePost">Delete</button>
+                    <button class="btn" type="submit" @click="updatePost" :disabled="!isUserPost">Update</button>
+                    <button class="btn" type="button" @click="deletePost" :disabled="!isUserPost">Delete</button>
                 </div>
             </form>
         </section>
@@ -28,8 +30,15 @@ export default {
         return {
             post: {
                 body: "",
+                user_id: "",
             },
         };
+    },
+    computed: {
+        isUserPost() {
+            const storedToken = localStorage.getItem("authToken");
+            return this.post.user_id === storedToken;
+        },
     },
     methods: {
         fetchPost(id) {
