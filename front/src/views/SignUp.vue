@@ -77,6 +77,7 @@ export default {
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
+                    localStorage.setItem("authToken", data.user_id);
                     this.$router.push("/");
                     //location.assign("/");
                 })

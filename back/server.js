@@ -173,7 +173,7 @@ app.get("/posts/:id", async (req, res) => {
 app.put("/posts/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const { body, like_count } = req.body;
+        const { body } = req.body;
         console.log("update request has arrived");
 
         const post = await pool.query("SELECT * FROM posts WHERE id = $1", [id]);
@@ -187,13 +187,6 @@ app.put("/posts/:id", async (req, res) => {
             updatepost = await pool.query("UPDATE posts SET body = $2 WHERE id = $1 RETURNING*", [id, body]);
         }
 
-        if (like_count) {
-            updatepost = await pool.query("UPDATE posts SET like_count = $2 WHERE id = $1 RETURNING*", [
-                id,
-                like_count,
-            ]);
-        }
-        console.log("updatedPost", updatepost);
         const name = await pool.query("SELECT username FROM users WHERE id = $1", [updatepost.rows[0].user_id]);
         const username = name.rows[0].username;
         return res.status(200).json({ post: { ...updatepost.rows[0], username } });
