@@ -14,7 +14,7 @@
                     ></textarea>
                 </div>
                 <div class="row-between">
-                    <button class="btn" type="submit">Update</button>
+                    <button class="btn" type="submit" @click="updatePost">Update</button>
                     <button class="btn" type="button" @click="deletePost">Delete</button>
                 </div>
             </form>
