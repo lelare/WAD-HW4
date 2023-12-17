@@ -246,14 +246,19 @@ app.delete("/posts/:id", async (req, res) => {
 });
 
 // delete all posts
-app.delete("/posts", async (req, res) => {
+app.delete("/posts/all/:user_id", async (req, res) => {
   try {
     console.log("delete all posts request has arrived");
-    const posts = await pool.query("SELECT * FROM posts");
+    const { user_id } = req.params;
+    const posts = await pool.query("SELECT * FROM posts WHERE user_id = $1", [
+      user_id,
+    ]);
+
     if (!posts.rows[0]) {
       return res.status(404).json({ err: `No posts found.` });
     }
-    await pool.query("DELETE FROM posts");
+    console.log("here");
+    await pool.query("DELETE FROM posts WHERE user_id = $1", [user_id]);
     return res.status(200).json({ msg: "All posts successfully deleted." });
   } catch (err) {
     console.error(err.message);

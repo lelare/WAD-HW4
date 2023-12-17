@@ -39,7 +39,7 @@ export default {
         fetchPosts() {
             fetch(`http://localhost:3000/posts/`)
                 .then((response) => response.json())
-                .then((data) => (this.postsList = data))
+                .then((data) => (this.postsList = data.posts))
                 .catch((err) => console.log(err.message));
         },
         formatDate: function (str) {

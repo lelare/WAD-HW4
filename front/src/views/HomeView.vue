@@ -5,7 +5,7 @@
             <PostsList />
             <div class="row-between">
                 <router-link to="/addPost"><button class="btn">Add Post</button></router-link>
-                <button class="btn mx-0">Delete all</button>
+                <button class="btn mx-0" v-on:click="DeleteAllPosts">Delete all</button>
                 <button class="btn mx-0" v-on:click="ResetLikes">Reset Likes</button>
             </div>
         </section>
@@ -25,6 +25,26 @@ export default {
         // ResetLikes: function () {
         //     this.$store.dispatch("ResetLikesAct");
         // },
+        DeleteAllPosts() {
+            var data = {
+                user_id: "6dccd208-1755-4386-bc28-ea1074fa1695",
+            };
+            fetch(`http://localhost:3000/posts/all/${data.user_id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((response) => {
+                    response.json();
+                    console.log(response.data);
+                    window.location.reload();
+                })
+                .catch((e) => {
+                    console.log(e);
+                    console.log("error");
+                });
+        },
     },
 };
 </script>
