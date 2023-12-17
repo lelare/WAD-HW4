@@ -6,7 +6,6 @@
             <div class="row-between">
                 <router-link to="/addPost"><button class="btn">Add Post</button></router-link>
                 <button class="btn mx-0" v-on:click="DeleteAllPosts">Delete all</button>
-                <button class="btn mx-0" v-on:click="ResetLikes">Reset Likes</button>
             </div>
         </section>
         <aside></aside>
@@ -22,12 +21,9 @@ export default {
         PostsList,
     },
     methods: {
-        // ResetLikes: function () {
-        //     this.$store.dispatch("ResetLikesAct");
-        // },
         DeleteAllPosts() {
             var data = {
-                user_id: "6dccd208-1755-4386-bc28-ea1074fa1695",
+                user_id: localStorage.getItem("authToken"),
             };
             fetch(`http://localhost:3000/posts/all/${data.user_id}`, {
                 method: "DELETE",

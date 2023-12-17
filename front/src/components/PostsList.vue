@@ -4,7 +4,7 @@
             <div class="post_heading">
                 <div class="post_author">
                     <img src="@/assets/user.png" alt="profile-img" />
-                    <!-- <span>{{ post.author_name }}</span> -->
+                    <span>{{ post.username }}</span>
                 </div>
                 <span>{{ formatDate(post.created_time) }}</span>
             </div>
@@ -25,11 +25,6 @@
 
 <script>
 export default {
-    // computed: {
-    //     postsList() {
-    //         return this.$store.state.posts;
-    //     },
-    // },
     data() {
         return {
             postsList: [],

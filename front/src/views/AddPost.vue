@@ -33,9 +33,8 @@ export default {
         addPost() {
             var data = {
                 body: this.post.body,
-                user_id: "",
+                user_id: localStorage.getItem("authToken"),
             };
-            // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
             fetch("http://localhost:3000/posts", {
                 method: "POST",
                 headers: {
